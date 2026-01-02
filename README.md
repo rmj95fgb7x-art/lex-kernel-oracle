@@ -290,14 +290,14 @@ See <CONTRIBUTING.md> for guidelines.
 
 MIT License - see <LICENSE> file.
 
-**Patent Notice**: This technology is patent-pending (PCT/2025). Commercial use requires licensing agreement. Contact: [your-email@example.com]
+**Patent Notice**: This technology is patent-pending (PCT/2025). Commercial use requires licensing agreement. Contact: [Nuizealand3@protonmail.com]
 
 -----
 
 ## Contact & Support ☎️📱📞
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/YOUR_USERNAME/adaptive-spectral-oracle/issues)
-- **Email**: [your-email@example.com]
+- **Email**: [Nuizealand3@protonmail.com]
 - **Trust Beneficiary**: `0x44f8219cBABad92E6bf245D8c767179629D8C689`
 
 -----

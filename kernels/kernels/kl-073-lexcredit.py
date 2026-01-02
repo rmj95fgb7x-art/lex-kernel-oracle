@@ -118,4 +118,63 @@ def main():
     print(f"Risk Tier: {result['risk_tier']}")
     print(f"Delinquencies: {result['delinquent']}")
     print("\n[HIGH RISK - DENIED]")
-    app_deny = CreditApplication("APP-003", "USR-11111", 20000.0, 60, 32000.0, 8, 0.52, 4, 3,
+    app_deny = CreditApplication("APP-003", "USR-11111", 20000.0, 60, 32000.0, 8, 0.52, 4, 3, 8, "rent", "other", datetime.now().timestamp())
+    scores_deny = [BureauScore("EXPERIAN", 560, False, 0, 28.5, "high"), BureauScore("EQUIFAX", 555, False, 0, 29.9, "high"), BureauScore("TRANSUNION", 565, False, 0, 27.8, "high")]
+    result = kernel.evaluate_application(app_deny, scores_deny)
+    print(f"Application: {result['app_id']}")
+    print(f"Requested: ${app_deny.requested_amount:,.2f}")
+    print(f"Consensus Score: {result['consensus_credit_score']}")
+    print(f"❌ DENIED")
+    print(f"Risk Tier: {result['risk_tier']}")
+    print(f"High DTI: {result['high_dti']}")
+    print(f"Delinquencies: {result['delinquent']}")
+    print(f"Excessive Inquiries: {result['excessive_inquiries']}")
+    print("\n[SIMULATE 100K APPLICATIONS]")
+    for i in range(100000):
+        score_base = np.random.normal(680, 80)
+        score_base = max(300, min(850, score_base))
+        approve_prob = (score_base - 500) / 350
+        if score_base > 740:
+            amount = np.random.rand()*40000 + 10000
+            income = np.random.rand()*80000 + 60000
+            dti = np.random.rand()*0.3 + 0.15
+            delinq = 0
+            inquiries = np.random.randint(0, 3)
+            apr = np.random.rand()*5 + 5
+        elif score_base > 620:
+            amount = np.random.rand()*25000 + 5000
+            income = np.random.rand()*50000 + 35000
+            dti = np.random.rand()*0.25 + 0.3
+            delinq = np.random.randint(0, 2)
+            inquiries = np.random.randint(1, 5)
+            apr = np.random.rand()*10 + 12
+        else:
+            amount = np.random.rand()*15000 + 3000
+            income = np.random.rand()*35000 + 25000
+            dti = np.random.rand()*0.2 + 0.4
+            delinq = np.random.randint(1, 4)
+            inquiries = np.random.randint(3, 10)
+            apr = np.random.rand()*8 + 22
+        app = CreditApplication(f"APP-{i}", f"USR-{i}", amount, 60, income, np.random.randint(12, 120), dti, np.random.randint(3, 15), delinq, inquiries, "rent", "personal", datetime.now().timestamp())
+        scores = [BureauScore(f"BUREAU{j}", int(score_base + np.random.randint(-20, 20)), approve_prob > 0.5, amount * (0.7 + np.random.rand()*0.3), apr + np.random.rand()*2, "prime" if score_base > 740 else "medium") for j in range(3)]
+        kernel.evaluate_application(app, scores)
+    stats = kernel.get_stats()
+    print(f"\n{'='*60}")
+    print("CREDIT DECISIONING SUMMARY")
+    print("="*60)
+    print(f"Applications Processed: {stats['apps_processed']:,}")
+    print(f"Approvals: {stats['approvals']:,}")
+    print(f"Denials: {stats['denials']:,}")
+    print(f"Approval Rate: {stats['approval_rate']:.1%}")
+    print(f"Total Approved: ${stats['total_approved']:,.2f}")
+    print(f"Avg Approved Amount: ${stats['avg_approved']:,.2f}")
+    print(f"\n💰 ROYALTY: ${stats['royalty']:,.2f}")
+    print(f"   At 10M apps/year: ${(10000000 * 25)/10000:,.2f}/year")
+    print(f"   At 50M apps/year: ${(50000000 * 25)/10000:,.2f}/year")
+    print(f"   US Market: 200M+ credit decisions/year")
+    print(f"   Beneficiary: {stats['beneficiary']}")
+    kernel.export_log('kl-073-lexcredit-log.json')
+
+
+if __name__ == "__main__":
+    main()

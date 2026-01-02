@@ -1,0 +1,5 @@
+docs/
+  tutorials/
+    01_quickstart.ipynb
+    02_advanced_usage.ipynb
+    03_custom_kernels.ipynb

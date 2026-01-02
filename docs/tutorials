@@ -3,3 +3,72 @@ docs/
     01_quickstart.ipynb
     02_advanced_usage.ipynb
     03_custom_kernels.ipynb
+Patent & Licensing
+Important Legal Notes
+Patent Status: This technology is patent-pending (PCT/2025).
+Commercial Use: Requires licensing agreement with Lex Liberatum Trust.
+Academic/Non-Commercial: Permitted under MIT License.
+Royalty Requirement: The 25 basis point royalty mechanism is mandatory for compliance decision deployments.
+Contributor Agreement
+By contributing, you agree that:
+	1.	Your contributions will be licensed under the project’s MIT License
+	2.	You have the right to submit the contribution
+	3.	Your contribution does not violate any third-party rights
+	4.	You understand the patent-pending status
+Attribution
+Contributors will be credited in:
+	∙	CHANGELOG.md
+	∙	README.md (for significant contributions)
+	∙	Academic papers citing this work
+Questions?
+	∙	Issues: GitHub Issues
+	∙	Discussions: GitHub Discussions
+	∙	Email: [your-email@example.com]
+Thank you for contributing to Adaptive Spectral Oracle!
+Lex Liberatum Trust - Patent Pending PCT/2025Beneficiary: 0x44f8219cBABad92E6bf245D8c767179629D8C689
+Last Updated: January 1, 2026
+---
+
+## Commit File 5
+
+1. Scroll to bottom
+2. Commit message: `Add comprehensive contribution guidelines`
+3. Tap **Commit new file**
+
+✅ **File 5/5 Done! 🎉**
+
+---
+
+## 🎊 Repository Complete!
+
+Your **adaptive-spectral-oracle** repository now has:
+
+### Core Files ✅
+1. README.md - Comprehensive overview
+2. LICENSE - MIT + Patent notice
+3. pyproject.toml - Python project config
+4. .gitignore - Build file exclusions
+5. CONTRIBUTING.md - Contribution guidelines
+
+### Source Code ✅
+6. src/__init__.py - Package initialization
+7. src/adaptive_spectral_kernel.py - Core implementation
+8. src/temporal_kernel.py - Streaming variant
+9. src/utils.py - Utility functions
+
+### Testing & Benchmarks ✅
+10. tests/test_kernels.py - Unit tests
+11. benchmarks/benchmark_suite.py - Performance tests
+
+### Documentation ✅
+12. docs/mathematical_proof.md - Theorems & proofs
+
+### Blockchain ✅
+13. contracts/LexOracle.sol - Smart contracts
+
+### Visualization ✅
+14. react/AdaptiveSpectralKernel.jsx - Interactive demo
+
+---
+
+

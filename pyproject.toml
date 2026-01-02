@@ -1,0 +1,143 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptive-spectral-oracle"
+version = "1.1.0"
+description = "Adaptive Spectral Kernel Oracle - Robust multi-source time-series fusion with provable adversarial resistance"
+readme = "README.md"
+authors = [
+    {name = "Your Name", email = "your-email@example.com"}
+]
+license = {text = "MIT"}
+keywords = [
+    "sensor-fusion",
+    "robust-statistics",
+    "spectral-analysis",
+    "adversarial-robustness",
+    "time-series",
+    "oracle",
+    "compliance",
+    "regtech",
+    "blockchain"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy>=1.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+    "ipython>=8.0.0",
+]
+benchmark = [
+    "matplotlib>=3.5.0",
+    "pandas>=1.4.0",
+]
+viz = [
+    "plotly>=5.0.0",
+]
+all = [
+    "adaptive-spectral-oracle[dev,benchmark,viz]",
+]
+
+[project.urls]
+Homepage = "https://github.com/YOUR_USERNAME/adaptive-spectral-oracle"
+Documentation = "https://github.com/YOUR_USERNAME/adaptive-spectral-oracle#readme"
+Repository = "https://github.com/YOUR_USERNAME/adaptive-spectral-oracle"
+Issues = "https://github.com/YOUR_USERNAME/adaptive-spectral-oracle/issues"
+Changelog = "https://github.com/YOUR_USERNAME/adaptive-spectral-oracle/releases"
+
+[tool.setuptools]
+packages = ["adaptive_spectral_oracle"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+adaptive_spectral_oracle = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--verbose",
+    "--cov=adaptive_spectral_oracle",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "scipy.*",
+    "matplotlib.*",
+    "pandas.*",
+    "plotly.*",
+]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/benchmarks/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+]

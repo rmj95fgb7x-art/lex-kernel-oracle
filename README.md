@@ -1,3 +1,5 @@
+# Lex Libertatum ASKO <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/555dc681-2f35-46f8-81d3-06a320821f98" />
+
 # Adaptive Spectral Kernel Oracle
 
 **Robust multi-source time-series fusion with provable adversarial resistance and on-chain compliance primitives**
@@ -8,11 +10,11 @@
 
 ---
 
-## Overview
+## Overview 🛩️
 
 The Adaptive Spectral Kernel Oracle fuses multi-source time-series data (sensor telemetry, compliance signals, claims cycles) into a robust compliance primitive using **median-anchored Gaussian priors** and **frequency-domain aggregation**.
 
-### Key Features
+### Key Features 💰💰💰
 
 - ✅ **Adversarial Robustness**: Tolerates up to 49% sensor contamination (vs. 10-20% for traditional methods)
 - ✅ **70-80% Error Reduction**: Under adversarial conditions vs. equal-weight averaging
@@ -27,22 +29,28 @@ The Adaptive Spectral Kernel Oracle fuses multi-source time-series data (sensor 
 ### Core Algorithm
 
 The oracle fuses n time-series **D**ᵢ ∈ ℝ^T into a robust output **K**_w:
-# Adaptive Spectral Kernel Oracle
+```
 
-**Robust multi-source time-series fusion with provable adversarial resistance and on-chain compliance primitives**
+K_w = ℱ⁻¹(Σᵢ₌₁ⁿ wᵢ · D̂ᵢ(ω))
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Patent: Pending](https://img.shields.io/badge/Patent-PCT%20Pending-red.svg)](https://patents.google.com/)
-
----
-### Core Algorithm
-
-The oracle fuses n time-series **D**ᵢ ∈ ℝ^T into a robust output **K**_w:
+```
 where **D̂**ᵢ = ℱ(**D**ᵢ) is the discrete Fourier transform.
 
 ### Adaptive Weights (Outlier-Resistant)
+```
+
+D̃ = median{D₁, …, Dₙ}  (element-wise)
+dᵢ = ‖Dᵢ - D̃‖₂
+τ = α · median{d₁, …, dₙ},  α ∈ [1, 3]
+wᵢ = exp(-dᵢ²/2τ²) / Σⱼ exp(-dⱼ²/2τ²)
+
+```
 ### Royalty Flywheel
+```
+
+R = K_w × V × 0.0025
+
+```
 25 basis points routed to Lex Liberatum Trust: `0x44f8219cBABad92E6bf245D8c767179629D8C689`
 
 ---
@@ -64,9 +72,23 @@ where **D̂**ᵢ = ℱ(**D**ᵢ) is the discrete Fourier transform.
 
 ```bash
 pip install adaptive-spectral-oracle
+```
+
+### From Source
+
+```bash
 git clone https://github.com/YOUR_USERNAME/adaptive-spectral-oracle.git
 cd adaptive-spectral-oracle
 pip install -e .
+```
+
+-----
+
+## Quick Start 💨⏩
+
+### Basic Usage
+
+```python
 from adaptive_spectral_oracle import AdaptiveSpectralKernel
 import numpy as np
 
@@ -88,6 +110,11 @@ K_w, weights = oracle.fit(signals)
 rmse = np.sqrt(np.mean((K_w - ground_truth) ** 2))
 print(f"RMSE: {rmse:.4f}")
 print(f"Weights: {weights}")
+```
+
+### Advanced: Temporal Streaming
+
+```python
 from adaptive_spectral_oracle import TemporalAdaptiveKernel
 
 # Streaming oracle with temporal memory
@@ -100,19 +127,35 @@ for t in range(100):
     # Automatic drift detection
     if min(weights) < 0.1:
         alert(f"Sensor {np.argmin(weights)} possibly compromised at t={t}")
-Applications
-Defense & Aerospace
-	∙	F-35 Sensor Fusion: 70-80% error reduction under electronic warfare
-	∙	Swarm Robotics: 49% fault tolerance for contested environments
-	∙	Satellite Telemetry: Drift detection in orbital sensor networks
-Regulatory Technology (RegTech)
-	∙	Healthcare: HIPAA compliance monitoring across hospital networks
-	∙	Finance: AML/KYC signal fusion with adversarial resistance
-	∙	Pharma: FDA claims cycle aggregation
-Blockchain
-	∙	On-Chain Oracles: Deterministic CREATE2 deployment
-	∙	DeFi Compliance: Real-time regulatory primitive generation
-	∙	Royalty Routing: Immutable 25bp fee distribution
+```
+
+-----
+
+## Applications
+
+### Defense & Aerospace 🪖🎖️
+
+- **F-35 Sensor Fusion**: 70-80% error reduction under electronic warfare
+- **Swarm Robotics**: 49% fault tolerance for contested environments
+- **Satellite Telemetry**: Drift detection in orbital sensor networks
+
+### Regulatory Technology (RegTech)
+
+- **Healthcare**: HIPAA compliance monitoring across hospital networks
+- **Finance**: AML/KYC signal fusion with adversarial resistance
+- **Pharma**: FDA claims cycle aggregation
+
+### Blockchain 🧱⛓️
+
+- **On-Chain Oracles**: Deterministic CREATE2 deployment
+- **DeFi Compliance**: Real-time regulatory primitive generation
+- **Royalty Routing**: Immutable 25bp fee distribution
+
+-----
+
+## Project Structure 🏗️
+
+```
 adaptive-spectral-oracle/
 ├── README.md                    # This file
 ├── LICENSE                      # MIT License
@@ -135,20 +178,47 @@ adaptive-spectral-oracle/
 │   └── use_cases.md             # F-35, swarms, RegTech
 └── tests/
     └── test_kernels.py          # Unit tests
-Theoretical Results
-Theorem 1: Convergence Under Clean Data
-Statement: If all sensors are clean (ϵᵢ = 0), then:
+```
+
+-----
+
+## Theoretical Results
+
+### Theorem 1: Convergence Under Clean Data
+
+**Statement**: If all sensors are clean (ϵᵢ = 0), then:
+
+```
 𝔼[‖K_w - f*‖²] ≤ C·σ²/n
-Corollary: Matches optimal unweighted averaging rate (no degradation).
-Theorem 2: Adversarial Robustness
-Statement: Under α < 0.5 contamination with ‖ϵᵢ‖ ≥ β·median(‖ηⱼ‖):
+```
+
+**Corollary**: Matches optimal unweighted averaging rate (no degradation).
+
+### Theorem 2: Adversarial Robustness
+
+**Statement**: Under α < 0.5 contamination with ‖ϵᵢ‖ ≥ β·median(‖ηⱼ‖):
+
+```
 𝔼[‖K_w - f*‖²] ≤ C·σ²/(n(1-α)) + O(e^(-β²/τ²))
-Corollary: Exponential suppression of adversaries (weights → 0.001 for β ≥ 5).
-Theorem 3: Computational Complexity
-Time: O(nT + nT log T)Space: O(nT)Comparison: EKF requires O(n³T) → 100-1000x slower at scale
-Full proofs in docs/mathematical_proof.md
-On-Chain Integration
-Solidity Example
+```
+
+**Corollary**: Exponential suppression of adversaries (weights → 0.001 for β ≥ 5).
+
+### Theorem 3: Computational Complexity
+
+**Time**: O(nT + nT log T)  
+**Space**: O(nT)  
+**Comparison**: EKF requires O(n³T) → 100-1000x slower at scale
+
+*Full proofs in [`docs/mathematical_proof.md`](docs/mathematical_proof.md)*
+
+-----
+
+## On-Chain Integration
+
+### Solidity Example
+
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -167,11 +237,20 @@ contract LexOracle {
         payable(TRUST).transfer(royalty);
     }
 }
-Deployed Networks:
-	∙	Base Sepolia: 0x[TBD]
-	∙	Arbitrum Sepolia: 0x[TBD]
-Citation
+```
+
+**Deployed Networks**: 
+
+- Base Sepolia: `0x[TBD]`
+- Arbitrum Sepolia: `0x[TBD]`
+
+-----
+
+## Citation 📚
+
 If you use this work in research, please cite:
+
+```bibtex
 @software{adaptive_spectral_oracle_2026,
   title = {Adaptive Spectral Kernel Oracle: Robust Multi-Source Fusion},
   author = {[Your Name]},
@@ -179,28 +258,61 @@ If you use this work in research, please cite:
   url = {https://github.com/YOUR_USERNAME/adaptive-spectral-oracle},
   note = {Patent Pending: PCT/2025/[NUMBER]}
 }
-Roadmap
-	∙	v1.0: Core adaptive kernel with median robust center
-	∙	v1.1: Comprehensive benchmark suite (133+ test cases)
-	∙	v1.2: Temporal streaming kernel with drift detection
-	∙	v1.3: Frequency-adaptive per-band weighting
-	∙	v1.4: Multi-modal fusion (radar + thermal + acoustic)
-	∙	v2.0: Rust implementation for embedded systems
-Contributing
+```
+
+-----
+
+## Roadmap 🚙🚗
+
+- [x] **v1.0**: Core adaptive kernel with median robust center
+- [x] **v1.1**: Comprehensive benchmark suite (133+ test cases)
+- [ ] **v1.2**: Temporal streaming kernel with drift detection
+- [ ] **v1.3**: Frequency-adaptive per-band weighting
+- [ ] **v1.4**: Multi-modal fusion (radar + thermal + acoustic)
+- [ ] **v2.0**: Rust implementation for embedded systems
+
+-----
+
+## Contributing 🧊
+
 We welcome contributions! Areas of interest:
-	1.	Mathematical Extensions: Frequency-selective weights, causal kernels
-	2.	Domain Applications: Add use cases (energy, telecom, etc.)
-	3.	Performance: Optimize FFT implementation, GPU acceleration
-	4.	Testing: Expand benchmark scenarios
+
+1. **Mathematical Extensions**: Frequency-selective weights, causal kernels
+1. **Domain Applications**: Add use cases (energy, telecom, etc.)
+1. **Performance**: Optimize FFT implementation, GPU acceleration
+1. **Testing**: Expand benchmark scenarios
+
 See <CONTRIBUTING.md> for guidelines.
-License
+
+-----
+
+## License 🪪
+
 MIT License - see <LICENSE> file.
-Patent Notice: This technology is patent-pending (PCT/2025). Commercial use requires licensing agreement. Contact: [your-email@example.com]
-Contact & Support
-	∙	GitHub Issues: Report bugs or request features
-	∙	Email: [nuizealand3@protonmail.com]
-∙	Trust Beneficiary: 0x44f8219cBABad92E6bf245D8c767179629D8C689
-Acknowledgments
-	∙	Lex Liberatum Trust A.T.W.W.
-	∙	DoD Replicator Program (kl-004-lexorbit pilot)
-	∙	[Any other contributors/sponsors]
+
+**Patent Notice**: This technology is patent-pending (PCT/2025). Commercial use requires licensing agreement. Contact: [your-email@example.com]
+
+-----
+
+## Contact & Support ☎️📱📞
+
+- **GitHub Issues**: [Report bugs or request features](https://github.com/YOUR_USERNAME/adaptive-spectral-oracle/issues)
+- **Email**: [your-email@example.com]
+- **Trust Beneficiary**: `0x44f8219cBABad92E6bf245D8c767179629D8C689`
+
+-----
+
+## Acknowledgments 👏👏
+
+- Lex Liberatum Trust A.T.W.W.
+- DoD Replicator Program (kl-004-lexorbit pilot)
+- [Any other contributors/sponsors]
+
+-----
+
+**Status**: Patent Pending | Production Ready | 133+ Kernels Deployed
+
+*Last Updated: January 1, 2026*
+
+```
+

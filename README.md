@@ -1,4 +1,4 @@
-# Lex Libertatum ASKO <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/555dc681-2f35-46f8-81d3-06a320821f98" />
+# Lex Libertatum Trust ASKO <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/555dc681-2f35-46f8-81d3-06a320821f98" />
 
 # Adaptive Spectral Kernel Oracle
 

@@ -296,8 +296,10 @@ MIT License - see <LICENSE> file.
 
 ## Contact & Support ☎️📱📞
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/YOUR_USERNAME/adaptive-spectral-oracle/issues)
-- **Email**: [Nuizealand3@protonmail.com]
+- **GitHub Issues**: [Report bugs or request features]
+- https://github.com/rmj95fgb7x-art/lex-kernel-oracle-issues. 
+- **Email**:
+- [Nuizealand3@protonmail.com]
 - **Trust Beneficiary**: `0x44f8219cBABad92E6bf245D8c767179629D8C689`
 
 -----
@@ -305,9 +307,7 @@ MIT License - see <LICENSE> file.
 ## Acknowledgments 👏👏
 
 - Lex Liberatum Trust A.T.W.W.
-- DoD Replicator Program (kl-004-lexorbit pilot)
-- [Any other contributors/sponsors]
-
+- Possible DoD Replicator Program (kl-004-lexorbit pilot)
 -----
 
 **Status**: Patent Pending | Production Ready | 133+ Kernels Deployed

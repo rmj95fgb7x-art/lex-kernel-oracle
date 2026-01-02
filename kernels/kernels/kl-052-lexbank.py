@@ -104,4 +104,26 @@ def main():
     for i in range(10000):
         is_fraud = np.random.rand() < 0.02
         if is_fraud:
-            txn = Transaction(f"TXN-{i}", f"ACCT-{np.random.randint(10000)}", f"MERCH-{np.random.randint(1000)}", np.random.ran​​​​​​​​​​​​​​​​
+            txn = Transaction(f"TXN-{i}", f"ACCT-{np.random.randint(10000)}", f"MERCH-{np.random.randint(1000)}", np.random.rand()*5000 + 1000, "Foreign", "DEV-UNK", "1.1.1.1", np.random.randint(15, 30), np.random.randint(50, 100), 100.0, 10, datetime.now().timestamp())
+            scores = [FraudScore(f"BANK{j}", 0.7 + np.random.rand()*0.25, ["velocity"], 0.9, True) for j in range(4)]
+        else:
+            txn = Transaction(f"TXN-{i}", f"ACCT-{np.random.randint(10000)}", f"MERCH-{np.random.randint(1000)}", np.random.rand()*200 + 20, "USA", "DEV-REG", "192.168.1.1", np.random.randint(1, 5), np.random.randint(5, 15), 100.0, 200, datetime.now().timestamp())
+            scores = [FraudScore(f"BANK{j}", np.random.rand()*0.3, [], 0.9, False) for j in range(4)]
+        kernel.score_transaction(txn, scores)
+    stats = kernel.get_stats()
+    print(f"\n{'='*60}")
+    print("FRAUD DETECTION SUMMARY")
+    print("="*60)
+    print(f"Transactions Processed: {stats['txns_processed']:,}")
+    print(f"Total Volume: ${stats['total_volume']:,.2f}")
+    print(f"Fraud Blocks: {stats['fraud_blocks']:,}")
+    print(f"Fraud Rate: {stats['fraud_rate']:.2%}")
+    print(f"Blocked Amount: ${stats['blocked_amount']:,.2f}")
+    print(f"\n💰 ROYALTY: ${stats['royalty']:,.2f}")
+    print(f"   At 1M txns/day: ${(1000000 * 25)/10000:,.2f}/day = ${(1000000 * 25 * 365)/10000:,.2f}/year")
+    print(f"   Beneficiary: {stats['beneficiary']}")
+    kernel.export_log('kl-052-lexbank-log.json')
+
+
+if __name__ == "__main__":
+    main()

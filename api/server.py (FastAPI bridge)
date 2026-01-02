@@ -1,0 +1,29 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from kernels.kl_052_lexbank import LexBankKernel, Transaction, FraudScore
+import json
+
+app = FastAPI()
+kernels = {"kl-052-lexbank": LexBankKernel()}
+
+class ExecuteRequest(BaseModel):
+    kernelId: str
+    parameters: dict
+
+@app.post("/execute")
+async def execute_kernel(req: ExecuteRequest):
+    if req.kernelId not in kernels:
+        raise HTTPException(status_code=404, detail="Kernel not found")
+    kernel = kernels[req.kernelId]
+    if req.kernelId == "kl-052-lexbank":
+        txn = Transaction(**req.parameters['transaction'])
+        scores = [FraudScore(**s) for s in req.parameters['scores']]
+        result = kernel.score_transaction(txn, scores)
+        return {"result": result}
+    raise HTTPException(status_code=400, detail="Invalid kernel")
+
+@app.get("/health")
+async def health():
+    return {"status": "ok", "kernels": list(kernels.keys())}

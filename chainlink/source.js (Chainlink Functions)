@@ -1,0 +1,16 @@
+const kernelId = args[0];
+const endpoint = args[1];
+const parameters = args[2];
+
+const response = await Functions.makeHttpRequest({
+  url: `${endpoint}`,
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  data: { kernelId, parameters: JSON.parse(parameters) }
+});
+
+if (response.error) {
+  throw Error("Request failed");
+}
+
+return Functions.encodeString(JSON.stringify(response.data.result));

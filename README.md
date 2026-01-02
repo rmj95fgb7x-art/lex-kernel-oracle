@@ -36,52 +36,6 @@ The oracle fuses n time-series **D**ᵢ ∈ ℝ^T into a robust output **K**_w:
 [![Patent: Pending](https://img.shields.io/badge/Patent-PCT%20Pending-red.svg)](https://patents.google.com/)
 
 ---
-
-## Overview
-
-The Adaptive Spectral Kernel Oracle fuses multi-source time-series data (sensor telemetry, compliance signals, claims cycles) into a robust compliance primitive using **median-anchored Gaussian priors** and **frequency-domain aggregation**.
-
-### Key Features
-
-- ✅ **Adversarial Robustness**: Tolerates up to 49% sensor contamination (vs. 10-20% for traditional methods)
-- ✅ **70-80% Error Reduction**: Under adversarial conditions vs. equal-weight averaging
-- ✅ **Linear Scalability**: O(n log n) complexity - tested to 10,000+ sensors
-- ✅ **Zero Configuration**: Auto-calibrating τ parameter eliminates manual tuning
-- ✅ **On-Chain Integration**: Deterministic CREATE2 deployment with royalty routing
-
----
-
-## Mathematical Foundation
-
-### Core Algorithm
-
-The oracle fuses n time-series **D**ᵢ ∈ ℝ^T into a robust output **K**_w:
-# Adaptive Spectral Kernel Oracle
-
-**Robust multi-source time-series fusion with provable adversarial resistance and on-chain compliance primitives**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Patent: Pending](https://img.shields.io/badge/Patent-PCT%20Pending-red.svg)](https://patents.google.com/)
-
----
-
-## Overview
-
-The Adaptive Spectral Kernel Oracle fuses multi-source time-series data (sensor telemetry, compliance signals, claims cycles) into a robust compliance primitive using **median-anchored Gaussian priors** and **frequency-domain aggregation**.
-
-### Key Features
-
-- ✅ **Adversarial Robustness**: Tolerates up to 49% sensor contamination (vs. 10-20% for traditional methods)
-- ✅ **70-80% Error Reduction**: Under adversarial conditions vs. equal-weight averaging
-- ✅ **Linear Scalability**: O(n log n) complexity - tested to 10,000+ sensors
-- ✅ **Zero Configuration**: Auto-calibrating τ parameter eliminates manual tuning
-- ✅ **On-Chain Integration**: Deterministic CREATE2 deployment with royalty routing
-
----
-
-## Mathematical Foundation
-
 ### Core Algorithm
 
 The oracle fuses n time-series **D**ᵢ ∈ ℝ^T into a robust output **K**_w:

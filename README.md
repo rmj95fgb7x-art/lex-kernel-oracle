@@ -548,7 +548,7 @@ We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 1. **Optimize Existing** - Improve performance/accuracy
 1. **Write Tests** - Expand test coverage
 1. **Documentation** - Improve guides/examples
-1. **Bug Bounties** - Find vulnerabilities (up to $10K)
+1. **Bug Bounties** - Find vulnerabilities 
 
 -----
 

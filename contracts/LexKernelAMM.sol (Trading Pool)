@@ -1,0 +1,135 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "./LexKernelIndex.sol";
+
+/**
+ * @title LexKernelAMM
+ * @notice Automated Market Maker for LKI/ETH trading (Uniswap-style)
+ */
+contract LexKernelAMM is ReentrancyGuard {
+    
+    LexKernelIndex public immutable indexToken;
+    
+    uint256 public reserveLKI;
+    uint256 public reserveETH;
+    uint256 public totalLiquidity;
+    mapping(address => uint256) public liquidity;
+    
+    uint256 public constant FEE = 30; // 0.3% (30/10000)
+    
+    event LiquidityAdded(address indexed provider, uint256 lkiAmount, uint256 ethAmount, uint256 liquidityMinted);
+    event LiquidityRemoved(address indexed provider, uint256 lkiAmount, uint256 ethAmount, uint256 liquidityBurned);
+    event Swap(address indexed trader, bool lkiToEth, uint256 amountIn, uint256 amountOut);
+    
+    constructor(address _indexToken) {
+        indexToken = LexKernelIndex(payable(_indexToken));
+    }
+    
+    /**
+     * @notice Add liquidity to pool
+     */
+    function addLiquidity(uint256 lkiAmount) external payable nonReentrant returns (uint256) {
+        require(lkiAmount > 0 && msg.value > 0, "Invalid amounts");
+        
+        uint256 liquidityMinted;
+        
+        if (totalLiquidity == 0) {
+            liquidityMinted = sqrt(lkiAmount * msg.value);
+        } else {
+            uint256 lkiLiquidity = (lkiAmount * totalLiquidity) / reserveLKI;
+            uint256 ethLiquidity = (msg.value * totalLiquidity) / reserveETH;
+            liquidityMinted = min(lkiLiquidity, ethLiquidity);
+        }
+        
+        require(liquidityMinted > 0, "Insufficient liquidity");
+        
+        indexToken.transferFrom(msg.sender, address(this), lkiAmount);
+        
+        liquidity[msg.sender] += liquidityMinted;
+        totalLiquidity += liquidityMinted;
+        reserveLKI += lkiAmount;
+        reserveETH += msg.value;
+        
+        emit LiquidityAdded(msg.sender, lkiAmount, msg.value, liquidityMinted);
+        return liquidityMinted;
+    }
+    
+    /**
+     * @notice Remove liquidity from pool
+     */
+    function removeLiquidity(uint256 liquidityAmount) external nonReentrant returns (uint256 lkiAmount, uint256 ethAmount) {
+        require(liquidity[msg.sender] >= liquidityAmount, "Insufficient liquidity");
+        
+        lkiAmount = (liquidityAmount * reserveLKI) / totalLiquidity;
+        ethAmount = (liquidityAmount * reserveETH) / totalLiquidity;
+        
+        liquidity[msg.sender] -= liquidityAmount;
+        totalLiquidity -= liquidityAmount;
+        reserveLKI -= lkiAmount;
+        reserveETH -= ethAmount;
+        
+        indexToken.transfer(msg.sender, lkiAmount);
+        payable(msg.sender).transfer(ethAmount);
+        
+        emit LiquidityRemoved(msg.sender, lkiAmount, ethAmount, liquidityAmount);
+    }
+    
+    /**
+     * @notice Swap LKI for ETH
+     */
+    function swapLKIForETH(uint256 lkiAmount, uint256 minEthOut) external nonReentrant returns (uint256) {
+        uint256 ethOut = getAmountOut(lkiAmount, reserveLKI, reserveETH);
+        require(ethOut >= minEthOut, "Slippage exceeded");
+        
+        indexToken.transferFrom(msg.sender, address(this), lkiAmount);
+        reserveLKI += lkiAmount;
+        reserveETH -= ethOut;
+        payable(msg.sender).transfer(ethOut);
+        
+        emit Swap(msg.sender, true, lkiAmount, ethOut);
+        return ethOut;
+    }
+    
+    /**
+     * @notice Swap ETH for LKI
+     */
+    function swapETHForLKI(uint256 minLkiOut) external payable nonReentrant returns (uint256) {
+        uint256 lkiOut = getAmountOut(msg.value, reserveETH, reserveLKI);
+        require(lkiOut >= minLkiOut, "Slippage exceeded");
+        
+        reserveETH += msg.value;
+        reserveLKI -= lkiOut;
+        indexToken.transfer(msg.sender, lkiOut);
+        
+        emit Swap(msg.sender, false, msg.value, lkiOut);
+        return lkiOut;
+    }
+    
+    /**
+     * @notice Calculate output amount (constant product formula with fee)
+     */
+    function getAmountOut(uint256 amountIn, uint256 reserveIn, uint256 reserveOut) public pure returns (uint256) {
+        require(amountIn > 0 && reserveIn > 0 && reserveOut > 0, "Invalid amounts");
+        uint256 amountInWithFee = amountIn * (10000 - FEE);
+        uint256 numerator = amountInWithFee * reserveOut;
+        uint256 denominator = (reserveIn * 10000) + amountInWithFee;
+        return numerator / denominator;
+    }
+    
+    function sqrt(uint256 x) private pure returns (uint256) {
+        if (x == 0) return 0;
+        uint256 z = (x + 1) / 2;
+        uint256 y = x;
+        while (z < y) {
+            y = z;
+            z = (x / z + z) / 2;
+        }
+        return y;
+    }
+    
+    function min(uint256 a, uint256 b) private pure returns (uint256) {
+        return a < b ? a : b;
+    }
+}

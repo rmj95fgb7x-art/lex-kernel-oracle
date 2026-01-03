@@ -1,0 +1,170 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "./LexKernelIndex.sol";
+
+/**
+ * @title LexKernelOptions
+ * @notice Options trading on LKI index token
+ */
+contract LexKernelOptions is Ownable, ReentrancyGuard {
+    
+    LexKernelIndex public immutable indexToken;
+    
+    enum OptionType { CALL, PUT }
+    
+    struct Option {
+        uint256 optionId;
+        address writer;
+        address holder;
+        OptionType optionType;
+        uint256 strikePrice;
+        uint256 premium;
+        uint256 size; // Amount of LKI tokens
+        uint256 expiry;
+        bool exercised;
+        bool exists;
+    }
+    
+    mapping(uint256 => Option) public options;
+    uint256 public nextOptionId;
+    
+    event OptionWritten(uint256 indexed optionId, address indexed writer, OptionType optionType, uint256 strike, uint256 expiry);
+    event OptionPurchased(uint256 indexed optionId, address indexed holder, uint256 premium);
+    event OptionExercised(uint256 indexed optionId, address indexed holder, uint256 profit);
+    event OptionExpired(uint256 indexed optionId);
+    
+    constructor(address _indexToken) {
+        indexToken = LexKernelIndex(payable(_indexToken));
+    }
+    
+    /**
+     * @notice Write (sell) an option
+     */
+    function writeOption(
+        OptionType optionType,
+        uint256 strikePrice,
+        uint256 premium,
+        uint256 size,
+        uint256 duration
+    ) external payable nonReentrant returns (uint256) {
+        require(duration > 0 && duration <= 90 days, "Invalid duration");
+        
+        // Writer must lock collateral
+        if (optionType == OptionType.CALL) {
+            require(indexToken.balanceOf(msg.sender) >= size, "Insufficient LKI");
+            indexToken.transferFrom(msg.sender, address(this), size);
+        } else {
+            uint256 collateral = strikePrice * size / 1e18;
+            require(msg.value >= collateral, "Insufficient collateral");
+        }
+        
+        uint256 optionId = nextOptionId++;
+        options[optionId] = Option({
+            optionId: optionId,
+            writer: msg.sender,
+            holder: address(0),
+            optionType: optionType,
+            strikePrice: strikePrice,
+            premium: premium,
+            size: size,
+            expiry: block.timestamp + duration,
+            exercised: false,
+            exists: true
+        });
+        
+        emit OptionWritten(optionId, msg.sender, optionType, strikePrice, block.timestamp + duration);
+        return optionId;
+    }
+    
+    /**
+     * @notice Buy an option
+     */
+    function buyOption(uint256 optionId) external payable nonReentrant {
+        Option storage option = options[optionId];
+        require(option.exists, "Option not found");
+        require(option.holder == address(0), "Already purchased");
+        require(block.timestamp < option.expiry, "Expired");
+        require(msg.value >= option.premium, "Insufficient premium");
+        
+        option.holder = msg.sender;
+        payable(option.writer).transfer(option.premium);
+        
+        emit OptionPurchased(optionId, msg.sender, option.premium);
+    }
+    
+    /**
+     * @notice Exercise option (if profitable)
+     */
+    function exerciseOption(uint256 optionId) external nonReentrant {
+        Option storage option = options[optionId];
+        require(option.exists, "Option not found");
+        require(option.holder == msg.sender, "Not holder");
+        require(block.timestamp < option.expiry, "Expired");
+        require(!option.exercised, "Already exercised");
+        
+        uint256 currentPrice = indexToken.getTokenPrice();
+        
+        if (option.optionType == OptionType.CALL) {
+            require(currentPrice > option.strikePrice, "Out of money");
+            uint256 profit = (currentPrice - option.strikePrice) * option.size / 1e18;
+            option.exercised = true;
+            indexToken.transfer(msg.sender, option.size);
+            emit OptionExercised(optionId, msg.sender, profit);
+        } else {
+            require(currentPrice < option.strikePrice, "Out of money");
+            uint256 profit = (option.strikePrice - currentPrice) * option.size / 1e18;
+            option.exercised = true;
+            payable(msg.sender).transfer(profit);
+            emit OptionExercised(optionId, msg.sender, profit);
+        }
+    }
+    
+    /**
+     * @notice Claim collateral after expiry (if not exercised)
+     */
+    function claimExpired(uint256 optionId) external nonReentrant {
+        Option storage option = options[optionId];
+        require(option.exists, "Option not found");
+        require(option.writer == msg.sender, "Not writer");
+        require(block.timestamp >= option.expiry, "Not expired");
+        require(!option.exercised, "Already exercised");
+        
+        if (option.optionType == OptionType.CALL) {
+            indexToken.transfer(msg.sender, option.size);
+        } else {
+            uint256 collateral = option.strikePrice * option.size / 1e18;
+            payable(msg.sender).transfer(collateral);
+        }
+        
+        emit OptionExpired(optionId);
+    }
+    
+    /**
+     * @notice Get option details
+     */
+    function getOption(uint256 optionId) external view returns (
+        address writer,
+        address holder,
+        OptionType optionType,
+        uint256 strike,
+        uint256 premium,
+        uint256 size,
+        uint256 expiry,
+        bool exercised
+    ) {
+        Option memory option = options[optionId];
+        return (
+            option.writer,
+            option.holder,
+            option.optionType,
+            option.strikePrice,
+            option.premium,
+            option.size,
+            option.expiry,
+            option.exercised
+        );
+    }
+}

@@ -1,0 +1,9 @@
+const hre = require("hardhat");
+async function main() {
+  const registryAddress = "0x..."; // Your deployed address
+  await hre.run("verify:verify", {
+    address: registryAddress,
+    constructorArguments: ["0x6090149792dAAeE9D1D568c9f9a6F6B46AA29eFD", "0x6330386435366661343134333461323962663366643834393565303432313466", "100000000000000000", "0xE4aB69C077896252FAFBD49EFD26B5D171A32410"]
+  });
+}
+main();

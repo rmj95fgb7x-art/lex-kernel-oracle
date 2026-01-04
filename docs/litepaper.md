@@ -1,3 +1,7 @@
+## 🔥 LIVE: $225 Base Sepolia Bounty [#1](issues/1)
+[![Benchmark](docs/litepaper.png)](docs/litepaper.md)  
+**Lex Kernel: 12% error (30% attack) vs Chainlink 28%**
+
 # Lex Liberatum Litepaper
 ## Tradable Kernel Intelligence Networks
 

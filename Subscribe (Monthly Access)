@@ -1,0 +1,13 @@
+const subscription = new ethers.Contract(
+  "0x48EAFE021EB16d9848258e6FC2653f6fef6aB5dd",
+  subscriptionABI,
+  signer
+);
+
+const tx = await subscription.subscribe(
+  1, // BASIC tier
+  { value: ethers.parseEther("0.05") }
+);
+
+await tx.wait();
+console.log("Subscribed!");

@@ -1,4 +1,5 @@
-[![LexRAG OfficeQA](docs/lexrag-officeqa.pdf)](docs/lexrag-officeqa.pdf)
+[![LexRAG OfficeQA] https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/lexrag-officeqa.pdf
+
 **2-min read: How we solve RAG's grounding crisis**
 
 # 🌐 Lex Liberatum: Tradable Kernel Intelligence Network

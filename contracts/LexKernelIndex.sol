@@ -25,7 +25,9 @@ contract LexKernelIndex is ERC20, Ownable, ReentrancyGuard {
     
     // Revenue tracking
     uint256 public totalIndexRevenue;
-    uint256 public revenuePerToken; // Accumulated revenue per token
+    uint256 public revenuePerToken; // Accumulated revenue per token //  ADD THIS LINE:
+address public immutable beneficiary = 0x44f8219cBABad92E6bf245D8c767179629D8C689;
+
     mapping(address => uint256) public revenueDebt; // User's claimed revenue
     
     // Index stats

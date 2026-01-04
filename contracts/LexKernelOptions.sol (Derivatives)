@@ -17,7 +17,9 @@ contract LexKernelOptions is Ownable, ReentrancyGuard {
     
     struct Option {
         uint256 optionId;
-        address writer;
+        address writer; // ADD THIS LINE:
+address public immutable beneficiary = 0x44f8219cBABad92E6bf245D8c767179629D8C689;
+
         address holder;
         OptionType optionType;
         uint256 strikePrice;

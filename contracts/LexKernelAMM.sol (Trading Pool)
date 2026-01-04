@@ -15,7 +15,9 @@ contract LexKernelAMM is ReentrancyGuard {
     uint256 public reserveLKI;
     uint256 public reserveETH;
     uint256 public totalLiquidity;
-    mapping(address => uint256) public liquidity;
+    mapping(address => uint256) public liquidity; // ADD THIS LINE:
+address public immutable beneficiary = 0x44f8219cBABad92E6bf245D8c767179629D8C689;
+
     
     uint256 public constant FEE = 30; // 0.3% (30/10000)
     

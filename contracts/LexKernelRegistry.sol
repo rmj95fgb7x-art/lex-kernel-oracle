@@ -21,7 +21,9 @@ contract LexKernelRegistry is ChainlinkClient, ConfirmedOwner {
     address public oracle;
     bytes32 public jobId;
     uint256 public oracleFee;
-    
+    //  Already hardcoded, VERIFY:
+address public immutable beneficiary = 0x44f8219cBABad92E6bf245D8c767179629D8C689;
+
     // Kernel tracking
     mapping(string => KernelMetadata) public kernels;
     mapping(bytes32 => ExecutionRequest) public requests;

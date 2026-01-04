@@ -1,0 +1,21 @@
+name: Bounty Tracker
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  track:
+    if: contains(github.event.label.name, 'bounty')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on bounty issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Bounty tracked! Make sure to:\n1. Comment "I\'m claiming this"\n2. Submit PR when complete\n3. Include all deliverables\n\nSee bounty requirements above for details.'
+            })

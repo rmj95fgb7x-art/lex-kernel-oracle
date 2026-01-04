@@ -1,0 +1,30 @@
+name: Deploy to Testnet
+
+on:
+  push:
+    tags:
+      - 'v*-testnet'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install
+        run: npm install
+      - name: Deploy to Base Sepolia
+        env:
+          PRIVATE_KEY: ${{ secrets.TESTNET_PRIVATE_KEY }}
+          BASE_SEPOLIA_RPC: ${{ secrets.BASE_SEPOLIA_RPC }}
+        run: npm run deploy:testnet
+      - name: Create deployment artifact
+        run: |
+          echo "Deployment successful" > deployment-log.txt
+          echo "Registry: $(cat deployments.json | jq -r .baseSepolia.LexKernelRegistry)" >> deployment-log.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: deployment-log
+          path: deployment-log.txt

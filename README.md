@@ -1,5 +1,4 @@
-## 🔥 LIVE: $225 Base Sepolia Bounty [#1](issues/1)https://github.com/rmj95fgb7x-art/lex-kernel-oracle/issues/1
-**Lex Kernel: 12% error (30% attack) vs Chainlink 28%**
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/issues/1#issuecomment-3707553088
 
 # 🌐 Lex Liberatum: Tradable Kernel Intelligence Network
 

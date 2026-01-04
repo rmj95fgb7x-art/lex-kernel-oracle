@@ -87,6 +87,34 @@ Banks, hospitals, and infrastructure operators make billions of decisions using 
 - Trade 24/7 on AMM with instant liquidity
 
 -----
+# Lex Liberatum Kernels for OfficeQA Grounded Reasoning
+
+OfficeQA tests end-to-end grounded reasoning over ~89K pages of U.S. Treasury Bulletins—complex tables, multi-decade spans, where small numeric errors fail. [web:4][web:12]
+
+**kl-385-lexrag** is a drop-in fusion kernel for exactly this:
+
+## Quick API
+
+```python
+from kernels.kl_385_lexrag import LexRAGKernel, DocumentRetrieval
+
+kernel = LexRAGKernel()
+
+retrievals = [
+    DocumentRetrieval("bulletin_1945.pdf", "$50M threshold", 0.92, "Table 2.1 p47", 0.88),
+    DocumentRetrieval("bulletin_2023.pdf", "$45M threshold", 0.89, "Table 12 p23", 0.85),
+    # ... ai_parse_document outputs
+]
+
+result = kernel.fuse_retrievals("Q3 revenue policy threshold?", retrievals)
+
+print(result['answer'])           # "$50M threshold" (consensus)
+print(result['grounded'])         # True (multi-source agreement)
+print(result['citations'])        # ['Table 2.1 p47', 'Table 12 p23']
+print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
+
+
+
 
 ## 🏗️ **Architecture**
 

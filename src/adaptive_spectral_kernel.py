@@ -13,6 +13,9 @@ Patent: PCT Pending
 import numpy as np
 from scipy.fft import fft, ifft
 from typing import List, Tuple, Optional, Union
+Add constant at top of class
+BENEFICIARY_ADDRESS = "0x44f8219cBABad92E6bf245D8c767179629D8C689"
+
 
 
 class AdaptiveSpectralKernel:

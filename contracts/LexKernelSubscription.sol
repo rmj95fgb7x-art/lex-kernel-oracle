@@ -17,7 +17,9 @@ contract LexKernelSubscription is Ownable, ReentrancyGuard {
     
     struct SubscriptionPlan {
         uint256 monthlyFee;
-        uint256 kernelLimit; // Max kernel executions per month (0 = unlimited)
+       // Already hardcoded, VERIFY:
+address public immutable beneficiary = 0x44f8219cBABad92E6bf245D8c767179629D8C689;
+ uint256 kernelLimit; // Max kernel executions per month (0 = unlimited)
         bool isActive;
     }
     

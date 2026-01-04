@@ -11,3 +11,84 @@ const tx = await subscription.subscribe(
 
 await tx.wait();
 console.log("Subscribed!");
+---
+
+### **3. Update GitHub Repository Description**
+
+**Go to:** GitHub repo → Settings → Description
+
+**Set to:**
+🌐 Tradable AI kernel intelligence network | 70 production kernels | Live on Base Sepolia | $72T+ addressable market
+**Website:**
+https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360
+**Topics/Tags:**
+blockchain, defi, base, chainlink, derivatives, ai, smart-contracts, solidity, python
+---
+
+### **4. Add to `docs/QUICK_START.md`** (New file)
+
+**File:** `/docs/QUICK_START.md`
+
+```markdown
+# Quick Start - Testnet
+
+## Try It Now (No Setup Required)
+
+Visit our deployed contracts on Base Sepolia:
+
+**Registry:** https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360
+
+Click "Write Contract" → Connect wallet → Execute a kernel
+
+---
+
+## Setup Local Environment
+
+1. **Get Base Sepolia ETH**
+   - Faucet: https://www.coinbase.com/faucets/base-ethereum-sepolia-faucet
+   - Need: 0.001 ETH for testing
+
+2. **Install Dependencies**
+   ```bash
+   npm install ethers
+1.	Execute Your First Kernel
+// See full example in DEPLOYMENTS.md
+Already Deployed Addresses
+	∙	Registry: 0xfFbEed10A8e4b41775E3800a340b20762Bf0B360
+	∙	Subscription: 0x48EAFE021EB16d9848258e6FC2653f6fef6aB5dd
+No need to deploy - just connect and use! 🚀
+---
+
+### **5. Pin Issue on GitHub**
+
+**Create new issue titled:** "✅ LIVE ON BASE SEPOLIA - Testnet Deployment Complete"
+
+**Content:**
+```markdown
+# 🎉 Lex Liberatum is Live on Base Sepolia!
+
+We successfully deployed all smart contracts to Base Sepolia testnet on January 3, 2025.
+
+## Quick Links
+
+**Registry Contract:** https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360
+
+**Try it now:** Click "Write Contract" → Connect wallet → Execute a kernel
+
+## What's Deployed
+
+✅ LexKernelRegistry  
+✅ LexKernelSubscription  
+✅ 70 production kernels registered  
+✅ 5 successful test executions  
+✅ Royalties flowing to beneficiary  
+
+## Next Steps
+
+- Security audit (Q1 2025)
+- Base mainnet deployment (Q2 2025)
+- First customer pilots
+
+---
+
+**Want to help?** Check out our open bounties and contribution guidelines.

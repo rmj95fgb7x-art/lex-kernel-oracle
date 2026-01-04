@@ -484,6 +484,8 @@ Platform takes 5% of premium as fee
 
 ## 🔐 **Security & Compliance**
 
+# Update beneficiary mention:
+- ✅ Royalty Distribution (25bp to 0x44f8219cBABad92E6bf245D8c767179629D8C689)
 ### **Smart Contract Security:**
 
 - ✅ OpenZeppelin libraries (battle-tested)

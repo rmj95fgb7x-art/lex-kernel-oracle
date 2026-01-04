@@ -1,5 +1,3 @@
-https://github.com/rmj95fgb7x-art/lex-kernel-oracle/issues/1#issuecomment-3707553088
-
 # 🌐 Lex Liberatum: Tradable Kernel Intelligence Network
 
 > **The world's first blockchain-indexed derivatives market for AI decision kernels**
@@ -9,6 +7,23 @@ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/issues/1#issuecomment-370755
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Base Network](https://img.shields.io/badge/Network-Base-0052FF.svg)](https://base.org)
 [![Chainlink](https://img.shields.io/badge/Oracle-Chainlink-375BD2.svg)](https://chain.link)
+# 🌐 Lex Liberatum: Tradable Kernel Intelligence Network
+
+> **The world's first blockchain-indexed derivatives market for AI decision kernels**
+
+## 🎉 **LIVE ON BASE SEPOLIA TESTNET!**
+
+**Registry Contract:** [`0xfFbEed10A8e4b41775E3800a340b20762Bf0B360`](https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360)  
+**Subscription Contract:** [`0x48EAFE021EB16d9848258e6FC2653f6fef6aB5dd`](https://sepolia.basescan.org/address/0x48EAFE021EB16d9848258e6FC2653f6fef6aB5dd)
+
+**Status:** ✅ Deployed | ✅ Verified | ✅ 70 Kernels Active  
+**Deployed:** January 3, 2025  
+**Network:** Base Sepolia (ChainID: 84532)
+
+[View All Transactions →](https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360#events)
+
+---
+
 
 ---
 

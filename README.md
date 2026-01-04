@@ -242,6 +242,7 @@ class AdaptiveSpectralKernel:
 - **Theorem 1:** O(1/n) convergence to true signal
 - **Theorem 2:** Tolerates up to 49% Byzantine sources
 - **Theorem 3:** O(n log n) computational complexity
+- https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/mathematical_proof.md
 
 **Performance:**
 
@@ -371,6 +372,9 @@ PGP Key: [Available on request]
 **Trademarks:** Lex Liberatum™, LKI Index™
 
 -----
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/litepaper.md
+
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/whitepaper.md
 
 ## 📞 **Contact**
 

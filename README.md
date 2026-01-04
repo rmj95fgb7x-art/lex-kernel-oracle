@@ -1,6 +1,3 @@
-## **COMPLETE `README.md` - COPY/PASTE NOW:**
-
-```markdown
 # 🌐 Lex Liberatum: Tradable Kernel Intelligence Network
 
 > **The world's first blockchain-indexed derivatives market for AI decision kernels**

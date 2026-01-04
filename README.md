@@ -1,3 +1,6 @@
+[![LexRAG OfficeQA](docs/lexrag-officeqa.pdf)](docs/lexrag-officeqa.pdf)
+**2-min read: How we solve RAG's grounding crisis**
+
 # 🌐 Lex Liberatum: Tradable Kernel Intelligence Network
 
 > **The world's first blockchain-indexed derivatives market for AI decision kernels**

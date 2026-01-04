@@ -563,7 +563,7 @@ We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ### **Academic:**
 
-- [Whitepaper](./docs/whitepaper.pdf) *(coming soon)*
+- [Whitepaper](https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/whitepaper.md) 
 - [arXiv Paper](https://arxiv.org/abs/...) *(coming soon)*
 
 ### **Community:**

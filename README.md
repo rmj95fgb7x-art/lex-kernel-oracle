@@ -633,7 +633,9 @@ If you use Lex Liberatum in research:
 
 *“When intelligence becomes tradable, markets become smarter”*
 
-[🌐 Website](https://lexliberatum.io) • [📖 Docs](https://docs.lexliberatum.io) • [💬 Discord](https://discord.gg/lexliberatum) • [🐦 Twitter](https://x.com/lexliberatum)
+[🌐 Website](https://lexliberatum.io) • [📖 Docs]
+## 🚀 Quickstart
+[![Litepaper](docs/litepaper.png)](docs/litepaper.md) ← 12% error vs Chainlink's 28%(https://discord.gg/lexliberatum) • [🐦 Twitter](https://x.com/lexliberatum)
 
 </div>
 ```

@@ -131,6 +131,8 @@ Revenue: 0.0025 ETH to protocol
 ├─ 20% → LKI buyback (supports price)
 └─ 10% → Protocol treasury
 
+# Update revenue model:
+├─ 50% → Beneficiary (0x44f8219cBABad92E6bf245D8c767179629D8C689)
 At 1B executions/day:
 = 912.5M ETH/year
 = $1.825T at $2K ETH

@@ -13,6 +13,9 @@ Mathematical Foundation:
     wᵢ(t) = exp(-dᵢ(t)/2τ²) / Σⱼ exp(-dⱼ(t)/2τ²)
 
 Patent: PCT Pending
+Add constant at top of class
+BENEFICIARY_ADDRESS = "0x44f8219cBABad92E6bf245D8c767179629D8C689"
+
 """
 
 import numpy as np

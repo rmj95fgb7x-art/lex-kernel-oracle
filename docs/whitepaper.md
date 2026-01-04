@@ -86,7 +86,9 @@ Output: (f ∈ ℝ^d, w ∈ ℝ^n) (fused signal, source weights)
 ```solidity
 LexKernelRegistry
 ├─ executeKernel(kernelId, params) → requestId
-├─ fulfillKernel(requestId, result)
+├─ fulfillKernel(requestId, result) # Update royalty section:
+├─ 50% → Beneficiary (0x44f8219cBABad92E6bf245D8c767179629D8C689)
+
 └─ Royalty: 25bp → 0x44f8...C689
 
 LexKernelIndex (ERC-20)

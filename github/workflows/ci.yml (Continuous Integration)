@@ -1,0 +1,58 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Test kernels
+        run: |
+          python kernels/kl-052-lexbank.py
+          python kernels/kl-091-lextrade.py
+          python kernels/kl-098-lexad.py
+      - name: Run pytest
+        run: |
+          pip install pytest
+          pytest tests/ -v
+
+  test-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Compile contracts
+        run: npx hardhat compile
+      - name: Run tests
+        run: npx hardhat test
+      - name: Check coverage
+        run: npx hardhat coverage
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install
+        run: npm install
+      - name: Lint Solidity
+        run: npx solhint 'contracts/**/*.sol'
+      - name: Lint JavaScript
+        run: npx eslint scripts/ test/

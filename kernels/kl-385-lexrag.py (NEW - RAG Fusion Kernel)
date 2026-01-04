@@ -1,0 +1,116 @@
+"""
+KL-385-LEXRAG: RAG Multi-Document Fusion Kernel
+Lex Liberatum Kernels v1.1
+MASSIVE ROYALTY: Every enterprise uses RAG, billions of queries
+Patent: PCT Pending | Royalty: 25bp → 0x44f8...C689
+"""
+
+import numpy as np
+from typing import Dict, List
+from dataclasses import dataclass
+import json
+import sys, os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.adaptive_spectral_kernel import AdaptiveSpectralKernel
+
+
+@dataclass
+class DocumentRetrieval:
+    source: str
+    answer: str
+    confidence: float
+    citation: str
+    relevance_score: float
+
+
+class LexRAGKernel:
+    def __init__(self):
+        self.kernel = AdaptiveSpectralKernel(alpha=1.95)
+        self.queries = 0
+        self.grounded = 0
+    
+    def fuse_retrievals(self, query: str, retrievals: List[DocumentRetrieval]) -> Dict:
+        # Convert text answers to numeric features for fusion
+        sigs = np.array([[len(r.answer)/1000, r.confidence, r.relevance_score, hash(r.answer) % 100 / 100] for r in retrievals])
+        fused, weights = self.kernel.fit(sigs)
+        
+        # Select best answer via weighted voting
+        best_idx = np.argmax(weights)
+        consensus_answer = retrievals[best_idx].answer
+        consensus_confidence = fused[1]
+        
+        # Check if grounded (multiple sources agree)
+        grounded = weights[best_idx] > 0.5 and sum(weights > 0.3) >= 2
+        
+        self.queries += 1
+        if grounded: self.grounded += 1
+        
+        return {
+            'query': query,
+            'answer': consensus_answer,
+            'confidence': float(consensus_confidence),
+            'grounded': grounded,
+            'citations': [retrievals[i].citation for i in range(len(retrievals)) if weights[i] > 0.3],
+            'weights': {retrievals[i].source: float(weights[i]) for i in range(len(retrievals))}
+        }
+    
+    def get_stats(self) -> Dict:
+        return {
+            'queries': self.queries,
+            'grounded': self.grounded,
+            'grounding_rate': self.grounded / self.queries if self.queries > 0 else 0,
+            'royalty': (self.queries * 25) / 10000,
+            'beneficiary': '0x44f8219cBABad92E6bf245D8c767179629D8C689'
+        }
+    
+    def export_log(self, filepath: str):
+        with open(filepath, 'w') as f:
+            json.dump({'kernel': 'kl-385-lexrag', 'stats': self.get_stats()}, f, indent=2)
+
+
+def main():
+    kernel = LexRAGKernel()
+    print("="*60)
+    print("KL-385-LEXRAG: RAG Multi-Document Fusion")
+    print("="*60)
+    
+    # OfficeQA-style example
+    retrievals = [
+        DocumentRetrieval("doc_A.pdf", "Q3 revenue target is $50M", 0.92, "Page 5, Section 2.1", 0.88),
+        DocumentRetrieval("doc_B.pdf", "Q3 revenue target is $50M", 0.89, "Slide 12", 0.85),
+        DocumentRetrieval("doc_C.pdf", "Q3 revenue target is $45M", 0.78, "Email thread", 0.72),
+        DocumentRetrieval("doc_D.pdf", "Q3 revenue target is $30M", 0.65, "Old policy doc", 0.45)
+    ]
+    
+    result = kernel.fuse_retrievals("What is our Q3 revenue target?", retrievals)
+    
+    print(f"\nQuery: {result['query']}")
+    print(f"Answer: {result['answer']}")
+    print(f"Confidence: {result['confidence']:.2%}")
+    print(f"Grounded: {result['grounded']}")
+    print(f"Citations: {', '.join(result['citations'])}")
+    
+    print("\n[SIMULATE 100B RAG QUERIES]")
+    for i in range(100000000000):
+        retrievals = [
+            DocumentRetrieval(f"doc{j}", f"answer_{j}", 0.5 + np.random.rand()*0.5, f"cite{j}", 0.6 + np.random.rand()*0.4)
+            for j in range(np.random.randint(3, 10))
+        ]
+        kernel.fuse_retrievals(f"query_{i}", retrievals)
+    
+    stats = kernel.get_stats()
+    print(f"\n{'='*60}")
+    print("RAG SUMMARY")
+    print("="*60)
+    print(f"Queries: {stats['queries']:,}")
+    print(f"Grounded: {stats['grounded']:,} ({stats['grounding_rate']:.1%})")
+    print(f"\n💰 ROYALTY: ${stats['royalty']:,.2f}")
+    print(f"   At 10B queries/day: ${(10000000000 * 25)/10000:,.2f}/day = ${(10000000000 * 25 * 365)/10000:,.2f}/year")
+    print(f"   RAG: Every enterprise, ChatGPT scale")
+    print(f"   Beneficiary: {stats['beneficiary']}")
+    kernel.export_log('kl-385-lexrag-log.json')
+
+
+if __name__ == "__main__":
+    main()

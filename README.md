@@ -113,9 +113,6 @@ print(result['grounded'])         # True (multi-source agreement)
 print(result['citations'])        # ['Table 2.1 p47', 'Table 12 p23']
 print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 
-
-
-
 ## 🏗️ **Architecture**
 
 ```
@@ -162,9 +159,10 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 -----
 
 ## 🎯 **90 Production Kernels**
-## 📦 Kernel Library
 
-**90 production kernels across 8 industries:**
+## 📦 Kernel Library 
+
+**90 production kernels across multiple industries:**
 
 - 🏥 **Healthcare:** 12 kernels ($4T TAM)
 - 💰 **Finance:** 15 kernels ($30T TAM)
@@ -177,7 +175,7 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 - 📚 **Other:** 2 kernels ($500B TAM)
 
 **See complete manifest:**
-
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/KERNEL_MANIFEST.md
 
 
 ### 💳 **Financial Services**

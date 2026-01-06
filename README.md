@@ -174,13 +174,9 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 - 💻 **Digital Services:** 12 kernels ($2T TAM)
 - 📚 **Other:** 2 kernels ($500B TAM)
 
-**See complete manifest:**
-https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/KERNEL_MANIFEST.md
-
-
-### 💳 **Financial Services**
-
 ```
+*eSee complete manifest:**
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/KERNEL_MANIFEST.md
 kl-052-lexbank     # Payment fraud (100M+ txns/day scale)
 kl-067-lexinsure   # Insurance claims fraud ($80B market)
 kl-073-lexcredit   # Credit decisioning (200M+ decisions/year)

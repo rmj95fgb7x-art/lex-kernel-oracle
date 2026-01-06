@@ -11,7 +11,7 @@
 
 ## 🎉 **LIVE ON BASE SEPOLIA TESTNET**
 
-**✅ Deployed January 4, 2026 | ✅ Contracts Verified | ✅ 70 Kernels Active**
+**✅ Deployed January 4, 2026 | ✅ Contracts Verified | ✅ 90 Kernels Active**
 
 | Contract | Address | BaseScan |
 |----------|---------|----------|
@@ -130,7 +130,7 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 │  ├─ LexKernelSubscription (monthly access)            │
 │  └─ Chainlink Functions (decentralized oracles)       │
 ├─────────────────────────────────────────────────────────┤
-│  KERNEL LAYER (70 production algorithms)              │
+│  KERNEL LAYER (90 production algorithms)              │
 │  ├─ Adaptive Spectral Fusion                          │
 │  ├─ Temporal Kernel (Time-series)                     │
 │  └─ Multi-source consensus (3-20 sources)             │
@@ -161,7 +161,24 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 
 -----
 
-## 🎯 **70 Production Kernels**
+## 🎯 **90 Production Kernels**
+## 📦 Kernel Library
+
+**90 production kernels across 8 industries:**
+
+- 🏥 **Healthcare:** 12 kernels ($4T TAM)
+- 💰 **Finance:** 15 kernels ($30T TAM)
+- 🏗️ **Infrastructure:** 20 kernels ($5T TAM)
+- 🚨 **Emergency Services:** 10 kernels ($500B TAM)
+- 📦 **Supply Chain:** 8 kernels ($20T TAM)
+- ⚽ **Sports Betting:** 5 kernels ($300B TAM)
+- ⚖️ **Legal/Civic:** 6 kernels ($1T TAM)
+- 💻 **Digital Services:** 12 kernels ($2T TAM)
+- 📚 **Other:** 2 kernels ($500B TAM)
+
+**See complete manifest:**
+
+
 
 ### 💳 **Financial Services**
 

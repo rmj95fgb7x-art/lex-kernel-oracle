@@ -309,10 +309,10 @@ npm run deploy:testnet
 
 ### **Q1 2026** ✅ (Current)
 
-- [x] 70 production kernels deployed
+- [x] 90 production kernels deployed
 - [x] Smart contracts on Base Sepolia
 - [x] 5 successful test executions
-- [x] Patent filed (PCT pending)
+- [x] Patent filed Jan,7, 2026(PCT pending)
 - [ ] Security audit (Trail of Bits) - In Progress
 - [ ] Close $500K seed round
 
@@ -378,7 +378,7 @@ PGP Key: [Available on request]
 
 **Software:** MIT License - see [LICENSE](./LICENSE)
 
-**Patent:** PCT Pending - “Multi-Source Adaptive Fusion for Critical Decision Systems”
+**Patent:** Filed PCT Pending - “Multi-Source Adaptive Fusion for Critical Decision Systems”
 
 **Trademarks:** Lex Liberatum™, LKI Index™
 

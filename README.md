@@ -4,8 +4,8 @@
 
 [![Testnet Status](https://img.shields.io/badge/Base%20Sepolia-LIVE-00D1B2?style=for-the-badge&logo=ethereum)](https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360)
 [![Contracts](https://img.shields.io/badge/Contracts-2%20Verified-4A90E2?style=for-the-badge)](https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360)
-[![Kernels](https://img.shields.io/badge/Kernels-70%20Active-7B61FF?style=for-the-badge)](./kernels)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Kernels](https://img.shields.io/badge/Kernels-90%20Active-7B61FF?style=for-the-badge)](./kernels)
+License: Custom Commercial - Patent Pending (USPTO filed Jan 7, 2026). See LICENSE.md for terms.
 
 ---
 
@@ -376,7 +376,7 @@ PGP Key: [Available on request]
 
 ## 📄 **License & Legal**
 
-**Software:** MIT License - see [LICENSE](./LICENSE)
+**Software:** License: Custom Commercial - Patent Pending (USPTO filed Jan 7, 2026). See LICENSE.md for terms.
 
 **Patent:** Filed PCT Pending - “Multi-Source Adaptive Fusion for Critical Decision Systems”
 

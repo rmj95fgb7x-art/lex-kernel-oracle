@@ -6,7 +6,7 @@
 [![Contracts](https://img.shields.io/badge/Contracts-2%20Verified-4A90E2?style=for-the-badge)](https://sepolia.basescan.org/address/0xfFbEed10A8e4b41775E3800a340b20762Bf0B360)
 [![Kernels](https://img.shields.io/badge/Kernels-90%20Active-7B61FF?style=for-the-badge)](./kernels)
 License: Custom Commercial - Notice: Intellectual Property of [A.T.W.W., Lex Libertatum Trust]. US Patent Pending (Filed Jan 7, 2026).
- See LICENSE.md for terms.
+ See LICENSE.md for terms.https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/LICENSE.md
 
 ---
 
@@ -378,6 +378,7 @@ PGP Key: [Available on request]
 ## 📄 **License & Legal**
 
 **Software:** License: Custom Commercial - Patent  (USPTO filed Jan 7, 2026). See LICENSE.md for terms.
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/LICENSE.md
 
 **Patent:** Notice: Intellectual Property of [A.T.W.W., Lex Libertatum Trust]. US Patent Pending (Filed Jan 7, 2026).
  - “Multi-Source Adaptive Fusion for Critical Decision Systems”

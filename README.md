@@ -383,6 +383,7 @@ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/LICENSE.md
 **Patent:** Notice: Intellectual Property of [A.T.W.W., Lex Libertatum Trust]. US Patent Pending (Filed Jan 7, 2026).
  - “Multi-Source Adaptive Fusion for Critical Decision Systems”
 **Trademarks:** Lex Liberatum™, LKI Index™
+**Safety Clause:** Terms of service https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/TERMS_OF_SERVICE.md
 
 -----
 https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/litepaper.md

@@ -1,0 +1,18 @@
+Lex Liberatum: Universal C-Kernel SDK
+Fiduciary Intelligence for Mission-Critical Embedded Systems
+This SDK provides a portable, deterministic C99 implementation of the Adaptive Spectral Fusion (Theorem 2) algorithm. Designed for deployment in high-stakes environments—including Aerospace (F-35 telemetry), Industrial Robotics, and Autonomous Infrastructure—where sensor integrity is non-negotiable.
+🚀 Key Advantages
+• Byzantine Fault Tolerance: Mathematically rejects up to 49% adversarial or "poisoned" sensor data.
+• MISRA-C Compliant: No dynamic memory allocation (malloc), making it suitable for safety-critical (ISO 26262 / DO-178C) systems.
+• Deterministic Performance: Fixed execution time per fusion cycle, preventing "jitter" in flight control or real-time robotics.
+• On-Chain Auditability: Designed to pair with the Lex Liberatum Trust on Base Sepolia for permanent execution logging.
+🛠 Integration
+1. Drop-in Files: Add lex_kernel.h and lex_kernel.c to your build system.
+2. Initialize: Define your LexKernelConfig with a \tau (Tau) value suited for your environment's noise floor.
+3. Execute: Call lex_execute_fusion() inside your primary control loop.
+LexKernelConfig f35_config = { .tau = 0.85f, .last_fused_truth = 0.0f };
+float raw_sensors[5] = {10.1, 10.2, 9.9, 25.0, 10.0}; // 25.0 is an outlier/spoof
+float truth = lex_execute_fusion(raw_sensors, 5, &f35_config);
+// Result: 10.05 (Spoofed 25.0 is mathematically discarded)
+⚖️ Legal & Patent
+Managed by the Lex Libertatum Trust. This implementation is protected under the patent filed Jan 7, 2026. Commercial use requires a royalty agreement routed through the 0x44f8...8C669 Registry on Base.

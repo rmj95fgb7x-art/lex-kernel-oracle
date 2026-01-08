@@ -1,0 +1,29 @@
+/* * Lex Liberatum Universal Kernel v1.0
+ * Adaptive Spectral Fusion (Theorem 2) - C99 Implementation
+ * Patent Pending: Jan 7, 2026
+ */
+
+#ifndef LEX_KERNEL_H
+#define LEX_KERNEL_H
+
+#include <stdint.h>
+
+#define LEX_MAX_CHANNELS 16
+#define LEX_SUCCESS 0
+#define LEX_ERR_BYZANTINE_FLOOD -1
+
+typedef struct {
+    float tau;              /* Sensitivity threshold (Alpha) */
+    float last_fused_truth; /* Previous state for temporal smoothing */
+    uint32_t execution_count;
+} LexKernelConfig;
+
+/* * Main Fusion Entry Point
+ * @param sensors: Input array of raw sensor values
+ * @param count: Number of active sensors (max LEX_MAX_CHANNELS)
+ * @param config: Configuration parameters
+ * @return: The "Fused Truth" value (Theorem 2 result)
+ */
+float lex_execute_fusion(float* sensors, uint8_t count, LexKernelConfig* config);
+
+#endif

@@ -1,0 +1,55 @@
+#include "lex_kernel.h"
+#include <math.h>
+
+/* Fast Taylor Series Approximation for exp(-x) to ensure determinism */
+static float fast_exp_neg(float x) {
+    if (x < 0) return 1.0f;
+    if (x > 4.0f) return 0.0f; // Cutoff for extreme outliers
+    // 4th Order Taylor: 1 - x + x^2/2 - x^3/6 + x^4/24
+    float x2 = x * x;
+    float x3 = x2 * x;
+    float x4 = x3 * x;
+    return 1.0f - x + (x2 * 0.5f) - (x3 * 0.166666f) + (x4 * 0.041666f);
+}
+
+float lex_execute_fusion(float* sensors, uint8_t count, LexKernelConfig* config) {
+    if (count > LEX_MAX_CHANNELS) count = LEX_MAX_CHANNELS;
+
+    float weights[LEX_MAX_CHANNELS];
+    float weight_sum = 0.0f;
+    float weighted_signal_sum = 0.0f;
+
+    /* 1. Calculate Robust Baseline (Median) */
+    // Simple insertion sort (Deterministic for small n)
+    for (int i = 1; i < count; ++i) {
+        float key = sensors[i];
+        int j = i - 1;
+        while (j >= 0 && sensors[j] > key) {
+            sensors[j + 1] = sensors[j];
+            j = j - 1;
+        }
+        sensors[j + 1] = key;
+    }
+    float median = sensors[count / 2];
+
+    /* 2. Apply Adaptive Spectral Fusion (Theorem 2) */
+    for (uint8_t i = 0; i < count; i++) {
+        float distance = (sensors[i] - median) * (sensors[i] - median);
+        
+        /* Gaussian Kernel Weighting */
+        float arg = distance / (2.0f * config->tau * config->tau);
+        weights[i] = fast_exp_neg(arg);
+        
+        weighted_signal_sum += sensors[i] * weights[i];
+        weight_sum += weights[i];
+    }
+
+    /* 3. Final Truth Extraction */
+    if (weight_sum < 0.0001f) return median; // Fallback if all sensors are outliers
+
+    float fused_truth = weighted_signal_sum / weight_sum;
+    config->last_fused_truth = fused_truth;
+    config->execution_count++;
+
+    return fused_truth;
+}

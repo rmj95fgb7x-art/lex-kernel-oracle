@@ -1,6 +1,4 @@
-A Technical Glossary is a vital "Authority Asset." It ensures that when an architect or a partner like Ravi Sarkar looks at your project, they aren't guessing. It defines the vocabulary of the Lex Liberatum Trust and sets the rules of the game.
-Add this as a new file named GLOSSARY.md in your GitHub root directory.
-🏛️ Lex Kernel Oracle: Technical Glossary
+Lex Kernel Oracle: Technical Glossary
 | Term | Definition |
 |---|---|
 | O(n \log T) Standard | The maximum allowable computational complexity for any kernel within the Oracle. Ensures logarithmic scaling relative to time-series depth (T), preventing latency spikes in high-volume environments. |

@@ -424,6 +424,10 @@ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/whitepaper.md
 
 **Built for mission-critical systems. Deployed on Base. Backed by real revenue.**
 
+## Glossary ##:
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/GLOSSARY.md
+
+
 *“When intelligence becomes tradable, markets become smarter”*
 
 [![Star this repo](https://img.shields.io/github/stars/rmj95fgb7x-art/lex-kernel-oracle?style=social)](https://github.com/rmj95fgb7x-art/lex-kernel-oracle)

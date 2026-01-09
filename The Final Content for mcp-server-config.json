@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "lex-oracle-validator": {
+      "command": "python",
+      "args": ["-m", "lex_mcp_server"],
+      "env": {
+        "LEX_TRUST_ID": "ENTER_YOUR_EIN_HERE",
+        "PROTOCOL_VERSION": "1.0.0",
+        "TRUTH_THRESHOLD": "0.999"
+      },
+      "tools": [
+        {
+          "name": "validate_clinical_scan",
+          "description": "Executes O(n log T) spectral math to isolate diagnostic signal from biological noise in retinal data.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "data_stream": { "type": "string", "description": "Base64 DICOM/Image data" }
+            },
+            "required": ["data_stream"]
+          }
+        },
+        {
+          "name": "get_trust_score",
+          "description": "Returns the verification score (Lex Index) for a processed kernel output.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "transaction_id": { "type": "string" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -350,6 +350,8 @@ We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 1. Optimize existing kernel performance
 1. Improve documentation
 1. Report bugs or security issues
+## **Sweat Equity 
+ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/The%20TRUST_LEDGER.md
 
 -----
 

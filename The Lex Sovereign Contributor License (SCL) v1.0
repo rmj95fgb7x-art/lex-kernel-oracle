@@ -1,0 +1,14 @@
+Licensor: Lex Liberatum Trust (EIN-Registered)
+Asset: Lex Kernel Oracle (90+ Universal Kernels)
+1. Purpose
+This license is designed to foster transparency and open contribution while protecting the economic sovereignty of the Lex Liberatum Trust and its Lead Architects.
+2. Right to Contribute & View
+• Individual/Educational Use: The software is open for viewing, auditing, and academic research.
+• Sweat Equity: Contributions made via Pull Requests are governed by the TRUST_LEDGER.md and earn Lex Units (LU) as authorized by the Trustee.
+3. Commercial Use & The "Truth Tax"
+• Commercial Trigger: Any entity using these kernels to generate operational savings, diagnostic revenue, or tactical advantage must enter into a Commercial Participation Agreement with the Lex Liberatum Trust.
+• Licensing Fee: Commercial users are required to pay a licensing fee denominated in Kex Index Tokens.
+• Efficiency Dividend: A portion of all Kex fees is distributed to Lex Unit (LU) holders as a "Truth Dividend."
+4. IP Integrity
+• All derivatives and optimizations of the Kernels must maintain the O(n \log T) efficiency standard.
+• Any attempt to "fork" and remove the licensing requirement is a violation of the Trust's IP assignment, as witnessed and registered under Utah Trust Law.

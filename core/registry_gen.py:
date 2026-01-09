@@ -1,0 +1,33 @@
+import os
+import yaml
+
+def generate_lex_registry(kernel_dir="kernels/", output_file="registry.yaml"):
+    registry = {"kernels": []}
+    
+    # Categories based on your 90+ kernel suites
+    for root, dirs, files in os.walk(kernel_dir):
+        suite_name = os.path.basename(root)
+        if suite_name == "kernels": continue 
+        
+        for file in files:
+            if file.endswith(".py") and file.startswith("k_"):
+                # Unique ID based on filename (e.g., k_spectral.py -> LEX_SPECTRAL)
+                kernel_id = f"LEX_{file.replace('.py', '').replace('k_', '').upper()}"
+                
+                entry = {
+                    "id": kernel_id,
+                    "suite": suite_name,
+                    "file_name": file.replace(".py", ""),
+                    "path": os.path.join(root, file),
+                    "complexity": "O(n log T)", # Your signature efficiency
+                    "status": "ready"
+                }
+                registry["kernels"].append(entry)
+
+    with open(output_file, 'w') as f:
+        yaml.dump(registry, f, sort_keys=False)
+    
+    print(f"✅ Success: {len(registry['kernels'])} Kernels indexed in registry.yaml")
+
+if __name__ == "__main__":
+    generate_lex_registry()

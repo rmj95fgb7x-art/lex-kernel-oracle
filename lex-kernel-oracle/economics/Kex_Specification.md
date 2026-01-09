@@ -1,0 +1,1 @@
+The Kex Index Token is a fixed-cap utility asset (1,000,000,000) designed to meter the O(n \log T) computational efficiency of the Lex Oracle. It functions as the 'Gas' for clinical truth-validation. All commercial interactions generate a 20% burn rate, creating a deflationary pressure proportional to the volume of validated medical data.

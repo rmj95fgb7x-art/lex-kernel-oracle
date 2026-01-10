@@ -26,10 +26,10 @@ import json
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from src.temporal_kernel import TemporalAdaptiveKernel
-from src.utils import compute_all_metrics, detect_outliers
-
+```python
+from .temporal_adaptive_kernel import TemporalAdaptiveKernel
+from .utils import compute_all_metrics, detect_outliers, compute_risk_score
+```
 
 @dataclass
 class SatelliteTelemetry:

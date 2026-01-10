@@ -344,6 +344,8 @@ npm run deploy:testnet
 
 We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/LICENSE_SCL.md
+
 **Ways to contribute:**
 
 1. Build new kernels for additional domains

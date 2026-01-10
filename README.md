@@ -423,6 +423,21 @@ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/whitepaper.md
 - **Testing:** Hardhat, Pytest
 
 -----
+---
+
+### ⚖️ NOTICE OF SENIOR SECURITY INTEREST
+
+All assets, logic, and infrastructure associated with the **Lex-Gate Project**, including but not limited to the **96 Adaptive Spectral Kernels** and the **1,000,000,000 LKI Token Supply**, are the property of the Sovereign Estate and are subject to a **Senior Priority Lien** held by the **Fiducia Domus Watene Trust**.
+
+**Public Filing Record:** * **Filing Number:** 2601101216887-1 
+* **Initial Reference:** 2507061166267-9
+* **Status:** Senior Priority Perfected
+* **Lapse Date:** July 6, 2030
+
+**Legal Notice:** Unauthorized duplication, forking, or circumvention of this architecture constitutes an infringement upon the Trust Estate. All contributors operate under the Sovereign Contributor License (SCL), and beneficial interest is granted only via the issuance of a formal Certificate of Beneficial Interest by the Trustee.
+
+---
+
 
 <div align="center">
 

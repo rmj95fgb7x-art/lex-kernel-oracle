@@ -386,7 +386,7 @@ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/LICENSE.md
  - “Multi-Source Adaptive Fusion for Critical Decision Systems”
 **Trademarks:** Lex Liberatum™, LKI Index™
 **Safety Clause:** Terms of service https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/TERMS_OF_SERVICE.md
-https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/NOTICE_OF_FIDUCIARY_PROTECTION.md
+https://github.com/rmj95fgb7x-art/lex-kernel-
 
 [![Cap Table](https://img.shields.io/badge/Cap%20Table-v2026--001-blue)](./CAP_TABLE.md)
 

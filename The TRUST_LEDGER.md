@@ -1,30 +1,40 @@
-# ⚖️ Lex Liberatum Trust: Sovereign Ledger
+# 📜 THE TRUST LEDGER | Lex Liberatum Trust
 
-This ledger serves as the single source of truth for equity distribution and unit vesting within the Lex Liberatum Trust. All units (LU) are awarded based on **Proof-of-Contribution** and validated against the $O(n \log T)$ efficiency standard.
-
-## 1. Unit Definitions
-* **Lex Units (LU):** Fractional interest in the licensing revenue and efficiency dividends of the Lex Oracle.
-* **Vertical Focus:** Units are currently siloed by industry (Medical, Defense, Finance) to ensure specialized value capture.
-
-## 2. Vertical: Medical (The Moran-Shield Suite)
-**Target Market:** Pediatric Ophthalmology & Oncology  
-**Valuation Floor:** $3.5M Operational Savings per Clinic  
-**Total Vertical Pool:** 500,000 LU (Representing 100% of Medical Vertical Licensing)
-
-| Stakeholder | Role | Units Allocated | % of Vertical | Vesting Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **Founder** | Architect Primus | 450,000 LU | 90% | **Vested** |
-| **TBD** | Lead Systems Architect | 5,000 LU | 1% | *Awaiting Pilot* |
-| **Community** | Open Source Bounties | 45,000 LU | 9% | *Reserved* |
-
-## 3. Milestone Vesting Schedule (Lead Architect)
-The 5,000 LU assigned to the Lead Architect vest according to the following "Truth Milestones":
-1. **Infrastructure Alpha (1,000 LU):** Successful Dockerization and DICOM/HL7 ingestion bridge.
-2. **Clinical Validation (2,000 LU):** Successful integration at Moran/Primary Children’s with zero-latency data throughput.
-3. **Economic Proof (2,000 LU):** Verification of diagnostic throughput increase (The $3.5M Savings Proof).
-
-## 4. Attribution & Rights
-Unit holders are recognized as **"Original Architects"** of the Lex Standard. This ledger is cryptographically referenced in all future licensing agreements.
+**Parent Entity:** Fiducia Domus Watene Trust  
+**Status:** Secured & Perfected (UCC-1 / UCC-3 Amendment)  
+**Valuation Basis:** $45,500,000.00 USD  
+**Total Unit Supply:** 100,000 Lex Units (LU)  
+**Unit Par Value:** $455.00 USD  
 
 ---
-*“In Math We Trust. In Logic We Govern.”*
+
+## 🏛️ CAPITAL STRUCTURE & ALLOCATIONS
+
+| Holder ID | Role | Allocation | Status | Verified Interest |
+| :--- | :--- | :--- | :--- | :--- |
+| **001-TRUSTEE** | Trustee (Primary) | 99,875 LU | Active | 99.875% |
+| **002-POOL** | Bounty Reserve | 125 LU | Committed | 0.125% |
+
+---
+
+## ⚙️ ACTIVE BOUNTY LEDGER: WP-001 (LEX-GATE)
+
+The following units are committed to the development of the Lex-Gate Ingestor and Telemetry infrastructure.
+
+| Milestone | LU Released | Cumulative | Gate Status |
+| :--- | :--- | :--- | :--- |
+| **Phase 1: Design** | 15 LU | 15 LU | Accepted Design + Jurisdiction Disclosure |
+| **Phase 2: Alpha** | 35 LU | 50 LU | `bench.py` Replay Pass (Hardware Verified) |
+| **Phase 3: Gold** | 75 LU | 125 LU | 24h Burn-in / Telemetry Drift ≤ 0.01% |
+
+---
+
+## 🛡️ LEGAL COMPLIANCE & SECURITY
+1. **Seniority:** All Lex Units (LU) represent a beneficial interest in the Lex Liberatum Trust, which operates 96 Adaptive Spectral Kernels ($O(n \log T)$) licensed from the **Fiducia Domus Watene Trust**.
+2. **Anti-Dilution:** The Trustee maintains a 99.875% equity shield to ensure project stability.
+3. **Verification:** Specific UCC filing data and Deed of Trust exhibits are strictly proprietary. Full disclosure is provided only to vetted contributors upon issuance of an official **Certificate of Beneficial Interest**.
+4. **Scam Prevention:** This is the only official ledger. Lex Units are not currently tradable on external exchanges. Any solicitation of "LU" outside of official Trust channels is unauthorized.
+
+---
+**Last Updated:** January 10, 2026  
+**Authenticated by:** The Trustee, Lex Liberatum Trust

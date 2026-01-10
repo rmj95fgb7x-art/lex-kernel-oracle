@@ -1,0 +1,9 @@
+from core.regulator import LexKernel
+
+class Kernel401(LexKernel):
+    def process(self, data):
+        # Your O(n log T) math goes here
+        return processed_data
+
+# Initialize with the specific royalty
+kl401 = Kernel401(kernel_id="KL-401", royalty_rate=0.05)

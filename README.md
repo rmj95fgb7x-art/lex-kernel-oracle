@@ -395,9 +395,6 @@ https://github.com/rmj95fgb7x-art/lex-kernel-
 https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/The%20Lex%20Sovereign%20Contributor%20License%20(SCL)%20v1.0
 
 -----
-https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/litepaper.md
-
-https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/docs/whitepaper.md
 
 ## 📞 **Contact**
 

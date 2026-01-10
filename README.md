@@ -139,7 +139,7 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 
 ## 💰 **Market Opportunity**
 
-### **$72T Total Addressable Market Across 70 Kernels**
+### **$72T Total Addressable Market Across 90+ Kernels**
 
 |Sector                     |Market Size|Kernels|Annual Royalty Potential|
 |---------------------------|-----------|-------|------------------------|
@@ -163,7 +163,7 @@ print(result['weights'])          # {'bulletin_1945.pdf': 0.62, ...}
 
 ## 📦 Kernel Library 
 
-**90 production kernels across multiple industries:**
+**90+ production kernels across multiple industries:**
 
 - 🏥 **Healthcare:** 12 kernels ($4T TAM)
 - 💰 **Finance:** 15 kernels ($30T TAM)

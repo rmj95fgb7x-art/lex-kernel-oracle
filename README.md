@@ -222,7 +222,7 @@ kl-266-lexsocial   # Social media ranking (10T+ daily)
 kl-273-lexstream   # Live streaming
 ```
 
-**[View all 70 kernels →](./kernels)**
+**[View all 90+ kernels →](./kernels)**
 
 -----
 

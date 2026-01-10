@@ -387,6 +387,9 @@ https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/LICENSE.md
 **Trademarks:** Lex Liberatum™, LKI Index™
 **Safety Clause:** Terms of service https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/TERMS_OF_SERVICE.md
 https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/NOTICE_OF_FIDUCIARY_PROTECTION.md
+
+[![Cap Table](https://img.shields.io/badge/Cap%20Table-v2026--001-blue)](./CAP_TABLE.md)
+
 ## Governed by the Lex Sovereign##:
 https://github.com/rmj95fgb7x-art/lex-kernel-oracle/blob/main/The%20Lex%20Sovereign%20Contributor%20License%20(SCL)%20v1.0
 
